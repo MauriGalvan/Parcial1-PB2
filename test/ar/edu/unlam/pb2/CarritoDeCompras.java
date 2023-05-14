@@ -22,6 +22,7 @@ public class CarritoDeCompras {
         cantidadProducto++;
         producto.restarStock();
     }
+    
     public void elminarProducto(Producto producto) {
     	productos.remove(producto);
     	precioTotal -= producto.getPrecio();
@@ -31,7 +32,7 @@ public class CarritoDeCompras {
     
     
     
-    public boolean realizarPago(Cliente c,CarritoDeCompras ca) {
+    public boolean realizarPago() {
     	if (cliente.getSaldo() >= precioTotal) {
 			System.out.println("Pago realizado con exito");
 			return true;
@@ -40,7 +41,11 @@ public class CarritoDeCompras {
 		}	   		
     }	
     
- //getters y setters
+   
+    
+    
+    
+    //getters y setters
     
     public Cliente getCliente() {
 		return cliente;
@@ -65,6 +70,7 @@ public class CarritoDeCompras {
 	public int getCantidadProducto() {
 		return cantidadProducto;
 	}
+
 	public void setCantidadProducto(int cantidadProducto) {
 		this.cantidadProducto = cantidadProducto;
 	}
@@ -74,4 +80,6 @@ public class CarritoDeCompras {
 	}
 
 }
+    
+  
     
