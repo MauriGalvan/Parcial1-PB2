@@ -1,12 +1,8 @@
 package ar.edu.unlam.pb2;
 
-public class Cliente {
-	private String nombre;
-	private Integer codigoPostal;
-	protected String telefono;
-	private String mail;
-	 private double saldo;
+public class Cliente extends Persona{
 	
+	private double saldo;
 
 	public Cliente(String nombre, Integer codigoPostal, String telefono, String mail) {
 		this.nombre = nombre;
@@ -57,3 +53,4 @@ public class Cliente {
 	}
 
 }
+
