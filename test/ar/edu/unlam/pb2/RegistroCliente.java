@@ -29,4 +29,12 @@ public class RegistroCliente {
 		 }
 		 return null;
 	 }
+	  public void registrarClienteExixtente(Cliente cliente) throws Exception {
+	        for (Cliente c : Clientes) {
+	            if (c.getMail().equals(cliente.getMail())) {
+	                throw new Exception("El correo electrónico ya está registrado");
+	            }
+	        }
+	        Clientes.add(cliente);
+	    }
 }
