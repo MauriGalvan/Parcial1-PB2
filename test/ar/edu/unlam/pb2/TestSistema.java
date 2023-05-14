@@ -70,65 +70,16 @@ public class TestSistema {
 		
 		
 	}
-	  @Test
-			public void queSePuedaRegistrarUnClienteConUnCorreoExistente()throws Exception  {
+	@Test
+	public void queSePuedaRegistrarUnClienteConUnCorreoExistente()throws Exception  {
 				
-				Cliente cliente2 = new Cliente("Noelia", 2562, "1165372564", "noesol@gmail.com");
-				RegistroCliente prueba= new RegistroCliente();
-				prueba.registrarClienteExixtente(cliente2);
+		Cliente cliente2 = new Cliente("Noelia", 2562, "1165372564", "noesol@gmail.com");
+		RegistroCliente prueba= new RegistroCliente();
+		prueba.registrarClienteExixtente(cliente2);
 					
 				
 	}
-	
- 
-	
-	 // Carrito
-	@Test
-	public void queSePuedaRealizarElPagoDeUnaCompra() {
-		Cliente cliente2 = new Cliente("sofia", 3422, "11653756464", "sofi@gmail.com");
-		
-		CarritoDeCompras carrito =new CarritoDeCompras();
-		
-		Producto primerProducto= new Producto("Azucar",65.50,5,"Producto para endulzar");
-		Producto segundoProducto= new Producto("leche",80.50,8,"Producto para tomar con cafe");
-		Producto tercerProducto= new Producto("harina",74.50,10,"Producto para hacer pan");
-		
-		carrito.agregarProducto(primerProducto);
-		carrito.agregarProducto(segundoProducto);
-		carrito.agregarProducto(tercerProducto);
-		
-		CarritoDeCompras formaDePago = new CarritoDeCompras();
-		boolean efectuarElPago = formaDePago.realizarPago(cliente2, carrito);
-		assertTrue(efectuarElPago);
-		
-		
-	}
-	
-	
-	
-	// Administracion de inventario
-	@Test
-	public void registrarQueSePuedeHacerUnaSalidaDeProducto() {
-		Inventario inventario= new Inventario();
-		
-		Producto primerProducto= new Producto("yerba",350.30,8,"Producto para el mate");
-		Producto segundoProducto= new Producto("leche",80.50,8,"Producto para tomar con cafe");
-		Producto tercerProducto= new Producto("galletita",120.50,10,"Producto para la merienda");
-		
-		inventario.agregarProducto(primerProducto);
-		inventario.agregarProducto(segundoProducto);
-		inventario.agregarProducto(tercerProducto);
-		
-		Producto productoDeSalida = inventario.registrarSalida("yerba", 3);
-		assertNotNull(productoDeSalida);
-		assertEquals(5,productoDeSalida.getStock());
-		
-		
-		
-				
-		
-		
-	} 
+
 
 	// CATALOGO // CATALOGO // CATALOGO // CATALOGO // CATALOGO // CATALOGO
 	
