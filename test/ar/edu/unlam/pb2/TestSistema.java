@@ -17,7 +17,7 @@ public class TestSistema {
 		final String mail = "mau@gmail.com";
 				
 		nuevoCliente = new Cliente(nombre,codigoPostal,telefono,mail);	
-		RegistroCliente registroCliente = new RegistroCliente(nuevoCliente);
+		RegistroCliente registroCliente = new RegistroCliente();
 		
 		registroCliente.registrarCliente(nuevoCliente);	
 	}
@@ -30,20 +30,54 @@ public class TestSistema {
 		final String mail = "mau@gmail.com";
 				
 		nuevoCliente = new Cliente(nombre,codigoPostal,telefono,mail);	
-		RegistroCliente registroCliente = new RegistroCliente(nuevoCliente);
+		RegistroCliente registroCliente = new RegistroCliente();
 		 
 		registroCliente.registrarCliente(nuevoCliente);	
 		assertEquals(nuevoCliente, registroCliente.ObtenerCliente("1234567890"));
-	
 	}
 	@Test
-	public void queSePuedaRegistrarUnClienteConUnCorreoExistente()throws Exception  {
+	public void queNoSePuedaRegistarUnClienteSinCompletarTodosLosCamposRequeridos() {
+		Cliente ClienteCompleto;
+		Cliente ClienteIncompleto;
+
+		ClienteCompleto = new Cliente("mauri",1111,"1234567890","mau@gmail.com");
+		ClienteIncompleto = new Cliente("mauricio",1111,"","");
 		
-		Cliente cliente2 = new Cliente("Noelia", 2562, "1165372564", "noesol@gmail.com");
-		RegistroCliente prueba= new RegistroCliente(cliente2);
-		prueba.registrarClienteExixtente(cliente2);
-			
+		RegistroCliente registroClienteCompleto = new RegistroCliente();
+		RegistroCliente registroClienteIncompleto = new RegistroCliente();
+	
 		
+		assertTrue(registroClienteCompleto.ClienteRegistrado(ClienteCompleto));
+		assertFalse(registroClienteIncompleto.ClienteRegistrado(ClienteIncompleto));
+	}
+	
+	@Test
+	public void queNoSePuedaRegistrarUnClienteConUnMailOTelefonoQueYaExista() {
+		
+		Cliente ClienteA = new Cliente("mauri",111,"12345","mau@gmail");
+		Cliente ClienteB = new Cliente("ROBERTO",111,"12345","rober@gmail");
+		Cliente ClienteC = new Cliente("juan",111,"1234531","mau@gmail");
+		Cliente ClienteD = new Cliente("hola",111,"1234531","hola@gmail");
+		
+		RegistroCliente registroCliente = new RegistroCliente();
+		
+		
+		assertTrue(registroCliente.ClienteRegistrado(ClienteA));
+		assertFalse(registroCliente.ClienteRegistrado(ClienteB)); // tiene que dar false por que tiene el mismo telefono
+		assertFalse(registroCliente.ClienteRegistrado(ClienteC)); // tiene que dar false por que tiene el mismo mail
+		assertTrue(registroCliente.ClienteRegistrado(ClienteD)); // tiene que dar true por que usa distinto mail y telefono de los demas
+		
+		
+		
+	}
+	  @Test
+			public void queSePuedaRegistrarUnClienteConUnCorreoExistente()throws Exception  {
+				
+				Cliente cliente2 = new Cliente("Noelia", 2562, "1165372564", "noesol@gmail.com");
+				RegistroCliente prueba= new RegistroCliente();
+				prueba.registrarClienteExixtente(cliente2);
+					
+				
 	}
 	
  
