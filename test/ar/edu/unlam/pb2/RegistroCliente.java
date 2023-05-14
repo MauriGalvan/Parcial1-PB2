@@ -3,19 +3,24 @@ package ar.edu.unlam.pb2;
 import java.util.HashSet;
 
 public class RegistroCliente {
- private HashSet<Cliente>Clientes;
+private HashSet<Cliente>Clientes;
  
-	public RegistroCliente(Cliente Cliente) {
-		this.setCliente(new HashSet<Cliente>());
+	public RegistroCliente() {
+		this.Clientes = new HashSet<Cliente>();
 	}
 
-	public HashSet<Cliente> getCliente() {
-		return Clientes;
+	public boolean ClienteRegistrado(Cliente clienteRegistrado) {
+		if(clienteRegistrado.getTelefono().isEmpty() || clienteRegistrado.getNombre().isEmpty() || clienteRegistrado.getMail().isEmpty() || clienteRegistrado.getCodigoPostal() == 0) {			
+			return false; // busca si algun campo esta vacio retorne falso
+}
+		for(Cliente c : Clientes) {
+			if(c.getTelefono().equals(clienteRegistrado.getTelefono()) || c.getMail().equals(clienteRegistrado.getMail())) {
+				return false; //recorre la coleccion de clientes para que no halla ningun telefono o mail iguales
+			}
+		}
+				return Clientes.add(clienteRegistrado);
 	}
-
-	public void setCliente(HashSet<Cliente> Cliente) {
-		this.Clientes = Cliente;
-	}
+	
 
 	public void registrarCliente(Cliente NuevoCliente) {
 		Clientes.add(NuevoCliente);
