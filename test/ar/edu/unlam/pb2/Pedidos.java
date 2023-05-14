@@ -3,7 +3,7 @@ package ar.edu.unlam.pb2;
 public class Pedidos {
 	private Integer codigo;
 	private String descripcion;
-	private Integer cantidad;
+	private String estado;
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -16,12 +16,13 @@ public class Pedidos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public Integer getCantidad() {
-		return cantidad;
+	public String getEstado() {
+		return estado;
 	}
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
+	
 	
 
 }
